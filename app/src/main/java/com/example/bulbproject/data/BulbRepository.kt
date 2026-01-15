@@ -3,23 +3,38 @@ package com.example.bulbproject.data
 import javax.inject.Inject
 
 interface BulbRepository {
-    suspend fun switchState(): Boolean
+    suspend fun getState(): Boolean
+    suspend fun toggleState(): Boolean
+    suspend fun setBrightness(value: Int): Unit
+    suspend fun setColor(color: String): Unit
+
 }
 
 class BulbRepositoryImpl @Inject constructor(
     private val service: BulbService
-): BulbRepository {
-    override suspend fun switchState(): Boolean {
-        val response = service.checkPower()
+) : BulbRepository {
+    override suspend fun getState(): Boolean {
+        return service.getState().body() ?: false
+    }
 
-        if (response.body() == true) {
+    override suspend fun toggleState(): Boolean {
+        val currentState = getState()
+
+        if (currentState) {
             service.powerOff()
-            return false
-        }
-        else {
+        } else {
             service.powerOn()
-            return true
         }
+
+        return !currentState
+    }
+
+    override suspend fun setBrightness(value: Int) {
+        service.setBrightness(value)
+    }
+
+    override suspend fun setColor(color: String) {
+        service.setColor(color)
     }
 
 }

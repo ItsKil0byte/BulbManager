@@ -11,6 +11,6 @@ class GetGetBulbUseCaseImpl @Inject constructor(
     private val repository: BulbRepository
 ): GetBulbUseCases {
     override suspend fun invoke(): Boolean {
-        return repository.switchState()
+        return repository.toggleState()
     }
 }

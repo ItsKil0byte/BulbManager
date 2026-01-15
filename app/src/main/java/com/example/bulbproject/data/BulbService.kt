@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface BulbService {
 
     @GET("/state/")
-    suspend fun checkPower(): Response<Boolean>
+    suspend fun getState(): Response<Boolean>
 
     @POST("/state/on")
     suspend fun powerOn(): Response<Unit>
@@ -17,7 +17,7 @@ interface BulbService {
     suspend fun powerOff(): Response<Unit>
 
     @POST("/state/brightness")
-    suspend fun setBrightness(@Query("value") value: Int) : Response<Unit>
+    suspend fun setBrightness(@Query("value") value: Int): Response<Unit>
 
     @POST("state/color")
     suspend fun setColor(@Query("color") color: String): Response<Unit>
