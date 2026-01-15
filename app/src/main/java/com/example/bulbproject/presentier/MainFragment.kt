@@ -25,19 +25,43 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val viewModel: MainViewModel by viewModels { viewModelFactory }
 
+    private fun render(state: ViewModelState) {
+        with(binding) {
+
+            btn.isEnabled = !state.isLoading
+            seekBar.isEnabled = !state.isLoading
+            spinner.isEnabled = !state.isLoading
+
+            if (state.isLoading) {
+                return
+            }
+
+            if (state.state) {
+                indicator.setImageResource(android.R.drawable.button_onoff_indicator_on)
+            } else {
+                indicator.setImageResource(android.R.drawable.button_onoff_indicator_off)
+            }
+
+            if (seekBar.progress != state.brightness) {
+                seekBar.progress = state.brightness
+            }
+
+            val adapter = spinner.adapter
+            for (i in 0 .. adapter.count) {
+                if (adapter.getItem(i).toString().lowercase() == state.color) {
+                    if (spinner.selectedItemPosition != i) {
+                        spinner.setSelection(i)
+                    }
+
+                    break
+                }
+            }
+
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Привязываем state из view model к UI
-        viewModel.state.observe(viewLifecycleOwner) {
-            binding.indicator.setImageResource(
-                if (it) {
-                    android.R.drawable.button_onoff_indicator_on
-                } else {
-                    android.R.drawable.button_onoff_indicator_off
-                }
-            )
-        }
 
         // Цепляем цвета из ресурсов, так написано в доках андроеда
         ArrayAdapter.createFromResource(
@@ -88,6 +112,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Skip
             }
+        }
+
+        viewModel.state.observe(viewLifecycleOwner) {
+            render(it)
         }
     }
 

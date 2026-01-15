@@ -10,7 +10,7 @@ data class BulbInfo(
 )
 
 interface GetInfoUseCase {
-    suspend fun invoke(): BulbInfo
+    suspend operator fun invoke(): BulbInfo
 }
 
 class GetInfoUseCaseImpl @Inject constructor(
