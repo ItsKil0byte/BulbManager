@@ -1,9 +1,7 @@
-package com.example.somelesson.di.viewModel
+package com.example.bulbproject.di.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.bulbproject.di.viewModel.ViewModelFactory
-import com.example.bulbproject.di.viewModel.ViewModelKey
 import com.example.bulbproject.presentier.MainViewModel
 import dagger.Binds
 import dagger.Module

@@ -1,7 +1,7 @@
-import com.example.bulbproject.di.AppBindsModule
-import com.example.bulbproject.di.NetworkModule
+package com.example.bulbproject.di
+
 import com.example.bulbproject.presentier.MainFragment
-import com.example.somelesson.di.viewModel.ViewModelModule
+import com.example.bulbproject.di.viewModel.ViewModelModule
 import dagger.Component
 import dagger.Module
 

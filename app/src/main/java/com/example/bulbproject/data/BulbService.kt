@@ -16,9 +16,9 @@ interface BulbService {
     @POST("/state/off")
     suspend fun powerOff(): Response<Unit>
 
-    @POST("/state/brightness")
-    suspend fun setBrightness(@Query("value") value: Int): Response<Unit>
+    @POST("/brightness/")
+    suspend fun setBrightness(@Query("level") value: Int): Response<Unit>
 
-    @POST("state/color")
+    @POST("/color/")
     suspend fun setColor(@Query("color") color: String): Response<Unit>
 }

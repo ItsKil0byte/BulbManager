@@ -1,8 +1,9 @@
 package com.example.bulbproject
 
-import AppComponent
+import com.example.bulbproject.di.AppComponent
 import android.app.Application
 import android.content.Context
+import com.example.bulbproject.di.DaggerAppComponent
 
 class MyApplication: Application() {
 
