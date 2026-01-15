@@ -3,7 +3,10 @@ package com.example.bulbproject.presentier
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.bulbproject.R
@@ -24,6 +27,16 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Цепляем цвета из ресурсов, так написано в доках андроеда
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.colors,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+            binding.spinner.adapter = adapter
+        }
 
         binding.btn.setOnClickListener {
             viewModel.toggle()
@@ -49,6 +62,23 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
 
         })
+
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val color = parent?.getItemAtPosition(position).toString().lowercase()
+                viewModel.setColor(color)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Skip
+            }
+
+        }
     }
 
     override fun onAttach(context: Context) {
