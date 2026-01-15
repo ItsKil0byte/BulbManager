@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.bulbproject.presentier.MainFragment"
+        android:name="com.example.bulbmanager.presentier.MainFragment"
         android:label="MainFragment" />
 
 </navigation>

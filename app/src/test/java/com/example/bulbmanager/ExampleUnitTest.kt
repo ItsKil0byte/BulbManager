@@ -1,4 +1,4 @@
-package com.example.bulbproject
+package com.example.bulbmanager
 
 import org.junit.Test
 

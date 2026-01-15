@@ -1,6 +1,6 @@
-package com.example.bulbproject.domain
+package com.example.bulbmanager.domain
 
-import com.example.bulbproject.data.BulbRepository
+import com.example.bulbmanager.data.BulbRepository
 import javax.inject.Inject
 
 interface SetColorUseCase {

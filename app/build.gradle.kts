@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bulbproject"
+    namespace = "com.example.bulbmanager"
     compileSdk {
         version = release(36)
     }

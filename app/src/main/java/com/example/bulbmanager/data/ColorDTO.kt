@@ -1,4 +1,4 @@
-package com.example.bulbproject.data
+package com.example.bulbmanager.data
 
 data class ColorDTO(
     val id: Int,

@@ -1,4 +1,4 @@
-package com.example.bulbproject
+package com.example.bulbmanager
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

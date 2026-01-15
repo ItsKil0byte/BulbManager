@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BulbProject"
+rootProject.name = "BulbManager"
 include(":app")
