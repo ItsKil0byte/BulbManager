@@ -2,8 +2,12 @@ package com.example.bulbproject.di
 
 import com.example.bulbproject.data.BulbRepository
 import com.example.bulbproject.data.BulbRepositoryImpl
-import com.example.bulbproject.domain.GetBulbUseCases
-import com.example.bulbproject.domain.GetGetBulbUseCaseImpl
+import com.example.bulbproject.domain.SetBrightnessUseCase
+import com.example.bulbproject.domain.SetBrightnessUseCaseImpl
+import com.example.bulbproject.domain.SetColorUseCase
+import com.example.bulbproject.domain.SetColorUseCaseImpl
+import com.example.bulbproject.domain.ToggleBulbUseCase
+import com.example.bulbproject.domain.ToggleBulbUseCaseImpl
 import dagger.Binds
 import dagger.Module
 
@@ -14,6 +18,12 @@ interface AppBindsModule {
     fun bindBulbRepository(impl: BulbRepositoryImpl): BulbRepository
 
     @Binds
-    fun bindGetBulbUseCases(impl: GetGetBulbUseCaseImpl): GetBulbUseCases
+    fun bindToggleBulbUseCase(impl: ToggleBulbUseCaseImpl): ToggleBulbUseCase
+
+    @Binds
+    fun bindSetColorUseCase(impl: SetColorUseCaseImpl): SetColorUseCase
+
+    @Binds
+    fun bindSetBrightnessUseCase(impl: SetBrightnessUseCaseImpl): SetBrightnessUseCase
 
 }
