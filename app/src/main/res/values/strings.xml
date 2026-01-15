@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BulbProject</string>
 
+    <!-- А, а ещё я хотел сделать загрузку цветов с сервера, но... Блеп -->
+
     <string-array name="colors">
         <item>Red</item>
         <item>Green</item>

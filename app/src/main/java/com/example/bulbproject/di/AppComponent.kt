@@ -4,7 +4,9 @@ import com.example.bulbproject.presentier.MainFragment
 import com.example.bulbproject.di.viewModel.ViewModelModule
 import dagger.Component
 import dagger.Module
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         AppModule::class
