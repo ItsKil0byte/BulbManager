@@ -24,7 +24,7 @@ class MainFragment: Fragment(R.layout.main_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.btn.setOnClickListener {
-            viewModel.switch()
+            viewModel.toggle()
         }
     }
 
