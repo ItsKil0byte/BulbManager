@@ -9,13 +9,13 @@ import retrofit2.create
 
 @Module
 object NetworkModule {
+    private const val URL = "http://195.133.53.179:1337/"
 
     @Provides
     fun provideBulbService(): BulbService =
         Retrofit.Builder()
-            .baseUrl("http://192.168.0.100:8000/")
+            .baseUrl(URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create()
-
 }
