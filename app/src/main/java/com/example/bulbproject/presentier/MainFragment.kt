@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.bulbproject.R
@@ -28,7 +29,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private fun render(state: ViewModelState) {
         with(binding) {
 
-            btn.isEnabled = !state.isLoading
+            progressBar.isVisible = state.isLoading
+            button.isEnabled = !state.isLoading
             seekBar.isEnabled = !state.isLoading
             spinner.isEnabled = !state.isLoading
 
@@ -73,7 +75,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             binding.spinner.adapter = adapter
         }
 
-        binding.btn.setOnClickListener {
+        binding.button.setOnClickListener {
             viewModel.toggle()
         }
 
