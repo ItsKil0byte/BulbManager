@@ -28,6 +28,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Привязываем state из view model к UI
+        viewModel.state.observe(viewLifecycleOwner) {
+            binding.indicator.setImageResource(
+                if (it) {
+                    android.R.drawable.button_onoff_indicator_on
+                } else {
+                    android.R.drawable.button_onoff_indicator_off
+                }
+            )
+        }
+
         // Цепляем цвета из ресурсов, так написано в доках андроеда
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -77,12 +88,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Skip
             }
-
         }
     }
 
     override fun onAttach(context: Context) {
-        var component = context.applicationContext.appComponent
+        val component = context.applicationContext.appComponent
 
         component.inject(this)
 
